@@ -18,6 +18,11 @@ def add_blueprint(blueprint_name: str) -> Optional[str]:
     with open('blueprints/__init__.py', 'a') as blueprint_init:
         blueprint_init.write(f'from app.blueprints.{blueprint_name} import *\n')
 
+    # import blueprint models file to base models file
+    with open('models.py', 'a') as base_models_file:
+        base_models_file.write(f'from blueprints.{blueprint_name}.models import *\n')
+        base_models_file.close()
+
     os.chdir(f'blueprints/{blueprint_name}')
 
     # Create init file
@@ -35,6 +40,13 @@ def add_blueprint(blueprint_name: str) -> Optional[str]:
                  f"{blueprint_name} = Blueprint('{blueprint_name}', __name__, template_folder='templates')\n\n"]
         views_file.writelines(lines)
         views_file.close()
+
+    # Add models file
+    with open('models.py', 'w') as models_file:
+        lines = ['from app.extensions import db\n\n\n',
+                 f'# Write your models for the {blueprint_name} blueprint here\n']
+        models_file.writelines(lines)
+        models_file.close()
 
 
 if __name__ == '__main__':

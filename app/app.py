@@ -63,7 +63,7 @@ def load_blueprints(flask_app: Flask) -> None:
     *   flask_app.register_blueprint(blueprints.{blueprint_name})   *
     ***********************************************************
     """
-    flask_app.register_blueprint(blueprints.page)
+    pass
 
 
 def load_extensions(flask_app: Flask) -> None:
