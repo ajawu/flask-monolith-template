@@ -20,11 +20,6 @@ WORKDIR /app
 ENV VIRTUAL_ENV /env
 ENV PATH /env/bin:$PATH
 
-RUN export FLASK_APP=app.main:app \
-    && flask db init \
-    && flask db migrate \
-    && flask db upgrade
-
 EXPOSE 8000
 
 CMD ["gunicorn", "--bind", ":8000", "--workers", "3", "app.main:app"]
