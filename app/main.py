@@ -78,3 +78,6 @@ def load_extensions(flask_app: Flask) -> None:
 
 # celery_app = create_celery_app()
 app = create_app()
+
+if __name__ == "__main__":
+    app.run(port=8000, host='127.0.0.1')

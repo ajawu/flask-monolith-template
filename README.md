@@ -11,7 +11,7 @@ Create a new repository from this repository template. A guide on how to do this
 2. Cd into the project directory
 3. Install project dependencies
 ```bash
-Poetry install
+poetry install
 ```
 4. Create a new .env file based on the contents of .env.example file.
 
@@ -28,6 +28,25 @@ This will generate a new blueprint folder in the blueprints folder with the foll
 |-- views.py  
 |-- templates  
 |-- |-- {blueprint_name} 
+
+## Running your project
+### Run with docker
+Use the build.sh script included in the project
+```bash
+bash ./build.sh
+```
+This will create the docker image and run it on port 8000.
+
+### Run from terminal
+In the main project directory
+```bash
+export FLASK_APP=app.main:app
+flask db init \
+  && flask db migrate \
+  && flask db upgrade
+cd app
+python main.py
+```
  
 It will also import the blueprint models file into the main models.py file, import the blueprint into the main __init__.py file in the base blueprints folder.
 To activate a blueprint, register it in the app/app.py file in the load_blueprints() function according to the existing format.
