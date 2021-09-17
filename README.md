@@ -13,6 +13,7 @@ Create a new repository from this repository template. A guide on how to do this
 ```bash
 Poetry install
 ```
+4. Create a new .env file based on the contents of .env.example file.
 
 ## Usage
 Create a new blueprint
