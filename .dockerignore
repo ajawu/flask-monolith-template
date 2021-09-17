@@ -1,0 +1,6 @@
+.idea
+.venv
+*.pyc
+.env.example
+*.db
+build.sh
